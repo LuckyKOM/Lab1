@@ -1,4 +1,6 @@
-﻿namespace Store
+﻿using System.Text;
+
+namespace Store
 {
     public  class Product :BaseProduct
 
@@ -15,23 +17,23 @@
         {
             ProductId = productId;       
         }
-
-      
-        public  override bool IsValid()
+   
+        public override bool IsValid()
         {
            bool valid = true;
-            if ( (string.IsNullOrWhiteSpace(Title))||(!Price.HasValue)||(Price == 0))
+            if (string.IsNullOrWhiteSpace(Title)||Price <= 0)
                     valid = false;
             return valid;
            }
         public override string ToString()
         {
-            string  FullDescription ="";
-            FullDescription += "\nProduct ID: " + ProductId;
-            FullDescription +="\nTitle: " + Title;
-            FullDescription += "\nDescription: " + Description ;
-            FullDescription += "\nPrice: " + Price;
-            return FullDescription;
+            var fullDescription = new StringBuilder("");
+            fullDescription.Append("\nProduct ID: " + ProductId);
+            fullDescription.Append("\nTitle: " + Title);
+            fullDescription.Append("\nDescription: " + Description);
+            fullDescription.Append("\nPrice: " + Price);
+            return fullDescription.ToString();
+            
         }
 
     }

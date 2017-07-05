@@ -7,6 +7,7 @@ namespace Store
         Product RetreiveProduct(int productId);
         List<Product> RetreiveAllProducts();
         void AddProduct(Product product);
-        void DeleteProduct(Product product); 
+        void UpdateProduct(Product product);
+        void DeleteProduct(Product product);
     }
 }

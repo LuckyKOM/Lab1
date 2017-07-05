@@ -1,24 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-//public enum StateOption
-//{
-  //  Active,
-    //Deleted
-//}
+﻿
 namespace Store
 {
-   public  static  class Validation
+    public  static  class Validation
     {
-        // public StateOption StateOfEntity { get; set; }
-        //public bool Changed { get; set; }
-        //public bool Valid
-        // {
-        //   get { return Validate(); }
-        // }
-        // public bool New { get; set; }
         public static bool IsNewProduct(Product product, WareHouse wareHouse)
         {
             bool isNew = true;
@@ -41,9 +25,5 @@ namespace Store
             return exists;
 
         }
-       // public static bool IsChangedProduct(Product product, int productId)
-       // {
-
-       // }
     }
 }

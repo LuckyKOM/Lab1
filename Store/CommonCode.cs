@@ -9,13 +9,12 @@ namespace Store
                 Console.WriteLine("\nProduct description:");
                 string description = Console.ReadLine();
                 Console.WriteLine("\nProduct price:");
-                Nullable<decimal> price = null;
-                string sprice = Console.ReadLine();
-                if (!string.IsNullOrWhiteSpace(sprice)) price = decimal.Parse(sprice);
+               decimal price = 0;
+               string sprice = Console.ReadLine();
+               if (!string.IsNullOrWhiteSpace(sprice)) price = decimal.Parse(sprice);     
                 product.Description = description;
                 product.Price = price;
-                return product;  
-                     
+                return product;                      
         }
     }
 }

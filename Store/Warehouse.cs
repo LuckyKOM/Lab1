@@ -51,27 +51,23 @@ namespace Store
                 return productList.Find(x => x.ProductId == productId);
             else
                 return new Product();
-
         }
     
         public void AddProduct(Product product)
         {
-           Repeat1:
-                Console.WriteLine("Please enter title of product: ");
+            bool go = true;
+            while (go)
+             {   Console.WriteLine("Please enter title of product: ");
                 string title = Console.ReadLine();
                 product.Title = title;
-
-                if (!(Validation.IsNewProduct(product, this)))
-                {
-                    Console.WriteLine("Product with this title already exists.");
-                     goto Repeat1;
-                }
-                else 
-                {
+                if (Validation.IsNewProduct(product, this))
+                    go = false;
+                else              
+                  Console.WriteLine("Product with this title already exists.");            
+              } 
                    product =  CommonCode.Description(product);
                 if (product.IsValid())
-                {
-              
+              {             
                     int  prodId = 0;
                     foreach (var pd in this.ProductList)
                     {
@@ -82,7 +78,7 @@ namespace Store
                     product.ProductId = prodId;
                     this.ProductList.Add(product);
                 }
-                }                
+                               
         }
 
         public void DeleteProduct(Product product)
@@ -92,23 +88,16 @@ namespace Store
 
         public void UpdateProduct(Product product)
         {
-            Repeat:
-            Console.WriteLine("Enter title of product");
-            string title = Console.ReadLine();
-            product.Title = title;
-            product = CommonCode.Description (product);
-            if (product.IsValid())
-              {
-                if (!(Validation.IsNewProduct(product, this)))
-                {
-                    Console.WriteLine("Product with this title already exists.");
-                    goto Repeat;
-                }
-             }
-            else
+            bool go = true;
+            while (go)
             {
-                Console.WriteLine("Incorrect product characteristics");
-                goto Repeat; 
+                Console.WriteLine("Enter title of product");
+                string title = Console.ReadLine();
+                product.Title = title;
+                product = CommonCode.Description(product);
+                if (product.IsValid()) go = false;                              
+                else               
+                    Console.WriteLine("Incorrect product characteristics");              
             }
         }
     }

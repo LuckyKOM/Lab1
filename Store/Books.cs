@@ -6,11 +6,5 @@
         public int NumberOfPages { get; set; }
         public string Author { get;  set; }
         public int YearOfPublish { get; set; }
-
-        public Books()
-        {
-
-        }
-
     }
 }
